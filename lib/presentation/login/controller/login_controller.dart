@@ -6,7 +6,6 @@ import 'package:ev_project/presentation/user/BottomNavigation/view/bottomnav.dar
 import 'package:ev_project/repository/api/login/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../admin/admin_bottom/view/admin_bottom.dart';
 
 class LoginController extends ChangeNotifier{

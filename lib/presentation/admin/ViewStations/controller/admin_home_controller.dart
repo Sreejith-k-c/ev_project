@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import '../../../../repository/admin_view_station/model/admin_home_model.dart';
-import '../../../../repository/admin_view_station/service/admin_home_service.dart';
+import '../../../../repository/api/admin_view_station/model/admin_home_model.dart';
+import '../../../../repository/api/admin_view_station/service/admin_home_service.dart';
 
 class ViewStationController with ChangeNotifier {
   late StationsList stationsList = StationsList();
@@ -11,10 +11,14 @@ class ViewStationController with ChangeNotifier {
     isLoading = true;
     notifyListeners();
     try {
+
+  
       StationService.fetchStation().then((recData) {
-        log("$recData");
+        log("1234543234$recData");
+
+    
         if (recData["status"] == 1) {
-          stationsList = StationsList.fromJson(recData["data"]);
+          stationsList = StationsList.fromJson(recData);
           isLoading = false;
         } else {
           log("else");

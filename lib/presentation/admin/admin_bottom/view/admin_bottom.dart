@@ -4,6 +4,9 @@ import 'package:ev_project/presentation/admin/admin_add_service/view/add_service
 import 'package:ev_project/presentation/admin/admin_add_stations/view/add_stations.dart';
 import 'package:flutter/material.dart';
 
+import '../../AdmicActivity/view/Admin_activity.dart';
+import '../../view_servicecenter/view/view_servicecenter.dart';
+
 class ColorTheme {
   static Color appColor = Color.fromARGB(255, 7, 175, 119);
 }
@@ -18,8 +21,10 @@ class AdminBottom extends StatefulWidget {
 class _AdminBottomState extends State<AdminBottom> {
   final _pages = [
     ViewAllStations(),
+    ViewServiceCenter(),
     AddStations(),
     AddService(),
+    AdminActivity(),
   ];
 
   var _currentIndex = 0;
@@ -32,9 +37,11 @@ class _AdminBottomState extends State<AdminBottom> {
         backgroundColor: Colors.white,
         animationDuration: Duration(milliseconds: 500),
         items: [
-          Icon(Icons.home, color: Colors.blueGrey),
+          Icon(Icons.local_gas_station_sharp, color: Colors.blueGrey),
+          Icon(Icons.home_repair_service, color: Colors.blueGrey),
           Icon(Icons.ev_station_sharp, color: Colors.blueGrey),
           Icon(Icons.miscellaneous_services_outlined, color: Colors.blueGrey),
+          Icon(Icons.book_rounded, color: Colors.blueGrey),
         ],
         onTap: (index) {
           setState(() {

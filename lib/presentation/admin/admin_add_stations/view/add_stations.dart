@@ -158,13 +158,13 @@ Future<void> _getImage(ImageSource source) async{
                       contactCotroller.text,
                       priceCotroller.text);
 
-                      stationnameController.clear();
-                      latitudeCotroller.clear();
-                      longitudeCotroller.clear();
-                      addressCotroller.clear();
-                      operatinghoursCotroller.clear();
-                      contactCotroller.clear();
-                      priceCotroller.clear();
+                      // stationnameController.clear();
+                      // latitudeCotroller.clear();
+                      // longitudeCotroller.clear();
+                      // addressCotroller.clear();
+                      // operatinghoursCotroller.clear();
+                      // contactCotroller.clear();
+                      // priceCotroller.clear();
                   },
                   child: Text('Add Station'),
                 ),
