@@ -3,11 +3,11 @@ import 'dart:developer';
 import 'package:ev_project/core/app_utils.dart';
 import 'package:ev_project/repository/helper/api_helper.dart';
 
-class MybookingService {
-  static Future<dynamic> fetchMybooking() async{
+class MyvehicleService {
+  static Future<dynamic> fetchVehicle() async{
     try{
-      var decodeData=await ApiHelper.getBooking(
-        endpoint: "user-booked-charging-stations/",
+      var decodeData=await ApiHelper.getVehicle(
+        endpoint: "addVehicle/",
         header: ApiHelper.getApiHeader(access: await AppUtils.getAccessKey()));
         log(ApiHelper.getApiHeader(access: await AppUtils.getAccessKey()).toString());
         return decodeData;

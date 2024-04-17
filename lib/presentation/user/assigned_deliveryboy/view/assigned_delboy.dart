@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../controller/assigneed_delboy_controller.dart';
 
 class AssignedDelboy extends StatefulWidget {

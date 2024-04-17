@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 class MybookingController with ChangeNotifier{
   late MybookingModel mybookingModel=MybookingModel();
   bool isLoading=false;
-
+  
   fetchData() async{
     isLoading=true;
     notifyListeners();
     try{
       MybookingService.fetchMybooking().then((recData){
-        log("***************************************** $recData");
+        log("kjhgfghjk$recData");
         if (recData["status"]==1) {
           mybookingModel=MybookingModel.fromJson(recData);
           isLoading=false;
@@ -22,8 +22,8 @@ class MybookingController with ChangeNotifier{
         }
         notifyListeners();
       });
-    }catch(e) {
+    }catch (e) {
       log("$e");
     }
   }
-}
+  }

@@ -10,25 +10,18 @@ class MyBookings extends StatefulWidget {
 }
 
 class _MyBookingsState extends State<MyBookings> {
-  // @override
-  // void initState() {
-  //    Provider.of<MybookingController>(context,listen: false).fetchData();
-  //   super.initState();
-  // }
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Provider.of<MybookingController>(context, listen: false)
-          .fetchData();
-    });
-
+     Provider.of<MybookingController>(context,listen: false).fetchData();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<MybookingController>(context);
-  
-    return Scaffold(
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("My bookings",style: TextStyle(fontWeight: FontWeight.bold),),
+          centerTitle: true,
+        ),
       body:Consumer<MybookingController>(builder: (context, scontroller, child) {
         return  ListView.builder(
         itemCount: scontroller.mybookingModel.data?.length,
@@ -49,13 +42,11 @@ class _MyBookingsState extends State<MyBookings> {
                    children: [
                      Padding(
                        padding: const EdgeInsets.all(8.0),
-                       child: Text("${scontroller.mybookingModel.data?[index].userDetails?.username??""}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                     ),
-                     
-                     Text("${scontroller.mybookingModel.data?[index].userDetails?.phoneNumber??""}"),
-                     Text("${scontroller.mybookingModel.data?[index].userDetails?.email??""}"),
-                     Text("${scontroller.mybookingModel.data?[index].bookingTime??""}"),
-                     Text("${scontroller.mybookingModel.data?[index].customBookTime??""}"),
+                       child: 
+                    Text("${scontroller.mybookingModel.data?[index].chargingStation.toString()}"),), 
+                     Text("${scontroller.mybookingModel.data?[index].customBookTime}"),
+                     Text("${scontroller.mybookingModel.data?[index].bookingTime}"),
+                     Text("${scontroller.mybookingModel.data?[index].price}"),
                    ],
                  ),
                ),

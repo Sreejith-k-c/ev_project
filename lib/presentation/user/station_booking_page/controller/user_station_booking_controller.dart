@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/app_utils.dart';
 
 class BookstationController extends ChangeNotifier {
-  void BookStation(BuildContext context, String stationid, String email,String date,String time) {
-    var data = {"charging_station": stationid, "email": email,"custom_book_time":date,"time":time};
+  void BookStation(BuildContext context, String stationid, String email,String date,String time,String price) {
+    var data = {"charging_station": stationid, "email": email,"custom_book_time":date,"time":time,"price":price};
     BookstationService.bookStations(data).then((recData) {
       if (recData["status"] == 1) {
         var message = "Booking completed";

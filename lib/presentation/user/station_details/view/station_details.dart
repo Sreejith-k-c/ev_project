@@ -1,6 +1,7 @@
 import 'package:ev_project/app_config/app_config.dart';
-import 'package:ev_project/presentation/user/book_station/view/book_station.dart';
 import 'package:flutter/material.dart';
+
+import '../../station_booking_page/view/user_station_booking_view.dart';
 
 class UserStationDetals extends StatefulWidget {
   const UserStationDetals({Key? key, required this.uid, required this.name, required this.latitude, required this.longitude, required this.address, required this.operatingHours, required this.contact, required this.price, required this.status, required this.photo}) : super(key: key);
@@ -59,11 +60,21 @@ class _UserStationDetalsState extends State<UserStationDetals> {
                 ],
               ),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: ElevatedButton(onPressed: (){
+            //   Navigator.push(context, MaterialPageRoute(builder: (context)=>BookStation(
+            //     uid:widget.uid, price: widget.price,
+            //     )));
+            //             }, child: Text("Book Station")),
+            // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>BookStation(uid:widget.uid)));
-                        }, child: Text("Book Station")),
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>BookingPage(
+                uid:widget.uid,
+                price: widget.price,)));
+                        }, child: Text("Book")),
             )
           ],
         ),

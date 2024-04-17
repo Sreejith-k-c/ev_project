@@ -1,26 +1,24 @@
 import 'dart:io';
+import 'package:ev_project/presentation/user/add_vehicle/controller/add_vehicle_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../../../../global_widget/image_icon_butto.dart';
-import '../controller/add_station_controller.dart';
 
-class AddStations extends StatefulWidget {
-  const AddStations({super.key});
+class AddVehicle extends StatefulWidget {
+  const AddVehicle({super.key});
 
   @override
-  State<AddStations> createState() => _AddStationsState();
+  State<AddVehicle> createState() => _AddVehicleState();
 }
 
-class _AddStationsState extends State<AddStations> {
+class _AddVehicleState extends State<AddVehicle> {
 File? image;
-var stationnameController=TextEditingController();
-var latitudeCotroller=TextEditingController();
-var longitudeCotroller=TextEditingController();
-var addressCotroller=TextEditingController();
-var operatinghoursCotroller=TextEditingController();
-var contactCotroller=TextEditingController();
-var priceCotroller=TextEditingController();
+var makeController=TextEditingController();
+var modelController=TextEditingController();
+var yearController=TextEditingController();
+var batteryController=TextEditingController();
+var chargingtimeController=TextEditingController();
 
 Future<void> _getImage(ImageSource source) async{
   final PickedFile=await ImagePicker().pickImage(source: source);
@@ -44,7 +42,7 @@ Future<void> _getImage(ImageSource source) async{
             children: [
               Center(
                 child: Text(
-                  'Add Station',
+                  'Add Vehicle',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -53,42 +51,42 @@ Future<void> _getImage(ImageSource source) async{
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: stationnameController,
+                controller: makeController,
                 decoration: InputDecoration(
-                  labelText: 'Station Name',
+                  labelText: 'Brand Name',
                   border: OutlineInputBorder(),
                 ),
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: latitudeCotroller,
+                controller: modelController,
                 decoration: InputDecoration(
-                  labelText: 'Latitude',
+                  labelText: 'Model Name',
                   border: OutlineInputBorder(),
                 ),
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: longitudeCotroller,
+                controller: yearController,
                 decoration: InputDecoration(
-                  labelText: 'Longitude',
+                  labelText: 'Year',
                   border: OutlineInputBorder(),
                 ),
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: addressCotroller,
+                controller: batteryController,
                 decoration: InputDecoration(
-                  labelText: 'Address',
+                  labelText: 'Battery Capacity',
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 16),
               TextFormField(
-                controller: operatinghoursCotroller,
+                controller: chargingtimeController,
                 decoration: InputDecoration(
-                  labelText: 'Operating hours',
+                  labelText: 'Charging Time',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -123,48 +121,21 @@ Future<void> _getImage(ImageSource source) async{
                     ),
                   ),
               SizedBox(height: 16),
-                          SizedBox(height: 16),
-              TextFormField(
-                controller: contactCotroller,
-                decoration: InputDecoration(
-                  labelText: 'Contact info',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.phone,
-              ),
-              SizedBox(height: 16),
-                          SizedBox(height: 16),
-              TextFormField(
-                controller: priceCotroller,
-                decoration: InputDecoration(
-                  labelText: 'Price',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.phone,
-              ),
+
               SizedBox(height: 16),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    Provider.of<AddStationController>(context,listen: false).addStation(
-                      context, image,
-                      stationnameController.text,
-                      latitudeCotroller.text,
-                      longitudeCotroller.text,
-                      addressCotroller.text,
-                      operatinghoursCotroller.text,
-                      contactCotroller.text,
-                      priceCotroller.text);
-
-                      // stationnameController.clear();
-                      // latitudeCotroller.clear();
-                      // longitudeCotroller.clear();
-                      // addressCotroller.clear();
-                      // operatinghoursCotroller.clear();
-                      // contactCotroller.clear();
-                      // priceCotroller.clear();
+                    Provider.of<AddVehicleController>(context,listen: false).addVehicle(
+                      context,
+                      image,
+                      makeController.text,
+                      modelController.text,
+                      yearController.text,
+                      batteryController.text,
+                      chargingtimeController.text);
                   },
-                  child: Text('Add Station'),
+                  child: Text('Add Vehicle'),
                 ),
               ),
             ],

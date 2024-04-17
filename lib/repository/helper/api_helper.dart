@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:ev_project/app_config/app_config.dart';
 
@@ -253,6 +252,7 @@ class ApiHelper{
     log("$url");
     try{
       var response=await http.get(url,headers: header);
+      log("${response.statusCode}");
       if(response.statusCode==200){
         var decodeData=jsonDecode(response.body);
         return decodeData;
@@ -286,45 +286,6 @@ class ApiHelper{
   static getStationBooking({
     required String endpoint,
     Map<String,String>? header,
-  })async{
-    final url=Uri.parse(AppConfig.baseurl+endpoint);
-    log("$url");
-    try{
-      var response=await http.get(url,headers: header);
-      if(response.statusCode==200){
-        var decodeData=jsonDecode(response.body);
-        return decodeData;
-      }else{
-        print(response.body);
-      }
-    }catch(e){
-      rethrow;
-    }
-  }
-
-  // static getMybooking({
-  //   required String endpoint,
-  //   Map<String,String>? header,
-  // })async{
-  //   final url=Uri.parse(AppConfig.baseurl+endpoint);
-  //   log("$url");
-  //   try{
-  //     var response=await http.get(url);
-  //     if(response.statusCode==200){
-  //       var decodeData=jsonDecode(response.body);
-  //       print("**************Deco data*****************************${decodeData}");
-  //       return decodeData;
-  //     }else{
-  //       print(response.body);
-  //     }
-  //   }catch(e){
-  //     rethrow;
-  //   }
-  // }
-
-   static getMybooking({
-    required String endpoint,
-    Map<String,String>?header,
   })async{
     final url=Uri.parse(AppConfig.baseurl+endpoint);
     log("$url");
@@ -383,6 +344,48 @@ class ApiHelper{
       }
     }catch(e){
       log("$e");
+      rethrow;
+    }
+  }
+
+  static getVehicle({
+    required String endpoint,
+    Map<String,String>? header,
+  })async{
+    final url=Uri.parse(AppConfig.baseurl+endpoint);
+    log("$url");
+    try{
+      var response=await http.get(url,headers: header);
+      log("${response.statusCode}");
+      if (response.statusCode==201) {
+        var decodeData=jsonDecode(response.body);
+        log("$decodeData");
+        return decodeData;        
+      } else {
+        print(response.body);
+        log("error");
+      }
+    }catch(e) {
+      log("$e");
+      rethrow;
+    }
+  }
+
+  static getBooking({
+    required String endpoint,
+    Map<String,String>? header,
+  })async{
+    final url=Uri.parse(AppConfig.baseurl+endpoint);
+    log("$url");
+    try{
+      var response=await http.get(url,headers: header);
+      if (response.statusCode==200) {
+        var decodeData=jsonDecode(response.body);
+        return decodeData;
+      } else {
+        print(response.body);
+      }
+    }catch(e) {
       rethrow;
     }
   }

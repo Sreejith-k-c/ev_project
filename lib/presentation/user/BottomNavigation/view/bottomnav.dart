@@ -1,8 +1,8 @@
+import 'package:ev_project/presentation/user/profile/view/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import '../../ViewStations/view/viewstations.dart';
-// import '../../my_booking/view/my_booking.dart';
-import '../../profile/view/profile.dart';
+import '../../my_booking/view/my_booking.dart';
 import '../../viewService/view/viewservice.dart';
 
 class ColorTheme {
@@ -20,8 +20,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final _pages = [
     ViewAllStations(),
     ViewServiceCenter(),
-    // MyBookings(),
-    MyProfile(),
+    MyBookings(),
+    Profile(),
   ];
 
   var _currentIndex = 0;
@@ -36,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         items: [
           Icon(Icons.ev_station, color: Colors.blueGrey),
           Icon(Icons.miscellaneous_services, color: Colors.blueGrey),
-          // Icon(Icons.bookmark_outlined, color: Colors.blueGrey),
+          Icon(Icons.bookmark_outlined, color: Colors.blueGrey),
           Icon(Icons.account_box, color: Colors.blueGrey),
         ],
         onTap: (index) {

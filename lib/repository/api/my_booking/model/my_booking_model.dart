@@ -3,6 +3,7 @@
 //     final mybookingModel = mybookingModelFromJson(jsonString);
 
 import 'dart:convert';
+import 'dart:ffi';
 
 MybookingModel mybookingModelFromJson(String str) => MybookingModel.fromJson(json.decode(str));
 
