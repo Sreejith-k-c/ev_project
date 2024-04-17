@@ -21,8 +21,9 @@ class _BookingPageState extends State<BookingPage> {
   final dateController=TextEditingController();
   final customtimeController=TextEditingController();
   double _sliderValue = 1.0;
+  bool _isChecked = false;
 
-    Future<void> _selectDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -38,7 +39,7 @@ class _BookingPageState extends State<BookingPage> {
     }
   }
 
-    Future<void> _selectTime(BuildContext context) async {
+  Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
@@ -54,7 +55,7 @@ class _BookingPageState extends State<BookingPage> {
  
   @override
   Widget build(BuildContext context) {
-     num _pricevalue=num.parse(widget.price);
+    num _pricevalue=num.parse(widget.price);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -85,7 +86,7 @@ class _BookingPageState extends State<BookingPage> {
               const SizedBox(
                 height: 20,
               ),
-               Padding(
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   controller: emailController,
@@ -221,9 +222,63 @@ class _BookingPageState extends State<BookingPage> {
               const SizedBox(
                 height: 20,
               ),
+
+              // Checkbox
+              const Text(
+                'Select payment method',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade200,
+                    borderRadius: BorderRadius.circular(19),
+                  ),
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(17),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: AssetImage('assets/images/gpay.webp'),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Google pay',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 21,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Checkbox(
+                      value: _isChecked,
+                      onChanged: (value) {
+                        setState(() {
+                          _isChecked = value ?? false;
+                        });
+                      },
+                    ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                height: 20,
+              ),
               // Continue button
               GestureDetector(
-                onTap: () {
+                onTap: _isChecked ? () {
                   Provider.of<BookstationController>(context,listen: false).BookStation(
                     context,
                     widget.uid,
@@ -232,12 +287,12 @@ class _BookingPageState extends State<BookingPage> {
                     customtimeController.text.toString(),
                     widget.price);
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavBar()));
-                },
+                } : null,
                 child: Container(
                   width: double.infinity,
                   height: 70,
                   decoration: BoxDecoration(
-                    color: Colors.green,
+                    color: _isChecked ? Colors.green : Colors.grey,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Center(
