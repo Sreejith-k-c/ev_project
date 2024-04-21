@@ -20,6 +20,8 @@ class _ViewServiceCenterState extends State<ViewServiceCenter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Add Service center",style: TextStyle(fontWeight: FontWeight.bold)),
+      centerTitle: true,),
       body:Consumer<ViewServiceCenterController>(builder: (context, scontroller, child) {
         return  ListView.builder(
         itemCount: scontroller.viewCenter.data?.length,

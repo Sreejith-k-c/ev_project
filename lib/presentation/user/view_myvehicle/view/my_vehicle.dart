@@ -19,6 +19,8 @@ class _MyVehicleState extends State<MyVehicle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("My Vehicle",style: TextStyle(fontWeight: FontWeight.bold),),
+      centerTitle: true,),
       body: Consumer<MyvehicleController>(builder: (context, mcontroller, child) {
         return ListView.builder(
           itemCount: mcontroller.myvehicleModel.data?.length,

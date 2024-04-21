@@ -24,6 +24,8 @@ class _ViewStationBookingState extends State<ViewStationBooking> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("View Booking",style: TextStyle(fontWeight: FontWeight.bold),),
+      centerTitle: true,),
       body:Consumer<ViewBookingstationController>(builder: (context, scontroller, child) {
         return  ListView.builder(
         itemCount: scontroller.stationbookingModel.data?.length,
