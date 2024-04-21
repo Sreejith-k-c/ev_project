@@ -19,6 +19,8 @@ class _ViewAllStationsState extends State<ViewAllStations> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Available stations",style: TextStyle(fontWeight: FontWeight.bold),),
+      centerTitle: true),
       body: Consumer<ViewStationController>(builder: (context, vcontroller, child) {
         return ListView.builder(
         itemCount: vcontroller.stationsList.data?.length,
@@ -47,7 +49,8 @@ class _ViewAllStationsState extends State<ViewAllStations> {
                   color: Colors.blueGrey,
                   borderRadius: BorderRadius.circular(10)
                 ),
-                child: Center(child: Text("${vcontroller.stationsList.data?[index].name}")),
+                child: Center(child: Text("${vcontroller.stationsList.data?[index].name}",
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),),
               ),
             ),
           );

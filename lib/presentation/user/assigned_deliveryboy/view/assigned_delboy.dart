@@ -18,6 +18,8 @@ class _AssignedDelboyState extends State<AssignedDelboy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Assigned Deliveryboy",style: TextStyle(fontWeight: FontWeight.bold),),
+      centerTitle: true,),
       body:Consumer<AssigneddelboyController>(builder: (context, scontroller, child) {
         return  ListView.builder(
         itemCount: scontroller.assignedDeliveryboyModel.data?.length,
@@ -25,7 +27,6 @@ class _AssignedDelboyState extends State<AssignedDelboy> {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: 210,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.blueGrey,

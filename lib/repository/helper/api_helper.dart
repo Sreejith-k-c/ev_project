@@ -389,4 +389,23 @@ class ApiHelper{
       rethrow;
     }
   }
+
+  static fetchViewdeliveryboy({
+    required String endpoint,
+    Map<String,String>? header,
+  })async{
+    final url=Uri.parse(AppConfig.baseurl+endpoint);
+    log("$url");
+    try {
+      var response=await http.get(url,headers: header); 
+      if (response.statusCode==200) {
+        var decodeData=jsonDecode(response.body);
+        return decodeData;
+      } else {
+        print(response.body);
+      }
+    } catch (e) {
+      rethrow; 
+    }
+  }
 }

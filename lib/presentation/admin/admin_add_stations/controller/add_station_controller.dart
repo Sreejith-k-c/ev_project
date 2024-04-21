@@ -2,10 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-
 import '../../../../app_config/app_config.dart';
 import '../../../../core/app_utils.dart';
-
 class AddStationController extends ChangeNotifier{
   Future<void> addStation(
     BuildContext context,
@@ -28,8 +26,6 @@ class AddStationController extends ChangeNotifier{
             var message="station added";
             AppUtils.oneTimeSnackBar(message,txtColor: Colors.green, context: context);
           }else{
-            
-
             log(response.body.toString());
             var message="failed";
             AppUtils.oneTimeSnackBar(message,txtColor: Colors.red, context: context);

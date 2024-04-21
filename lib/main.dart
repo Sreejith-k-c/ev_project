@@ -1,5 +1,6 @@
 import 'package:ev_project/presentation/admin/Add_Deliveryboy/controller/add_deliveryboy_controller.dart';
 import 'package:ev_project/presentation/admin/assign_deliveryboy/controller/assign_deliveryboy_controller.dart';
+import 'package:ev_project/presentation/admin/view_deliveryboy/controller/view_deliveryboy_controller.dart';
 import 'package:ev_project/presentation/admin/view_service_booking/controller/view_service_controller.dart';
 import 'package:ev_project/presentation/admin/view_station_booking/controller/view_booking_controller.dart';
 import 'package:ev_project/presentation/user/add_vehicle/controller/add_vehicle_controller.dart';
@@ -40,6 +41,7 @@ void main() {
       ChangeNotifierProvider(create: (context) =>AddVehicleController()),
       ChangeNotifierProvider(create: (context) =>MyvehicleController()),
       ChangeNotifierProvider(create: (context) =>MybookingController()),
+      ChangeNotifierProvider(create: (context) =>ViewdeliveryboyController()),
     ],
    child: const MyApp(),
   )
