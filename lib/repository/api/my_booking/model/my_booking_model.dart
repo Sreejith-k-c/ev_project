@@ -3,7 +3,6 @@
 //     final mybookingModel = mybookingModelFromJson(jsonString);
 
 import 'dart:convert';
-import 'dart:ffi';
 
 MybookingModel mybookingModelFromJson(String str) => MybookingModel.fromJson(json.decode(str));
 
@@ -36,7 +35,7 @@ class Datum {
     String? chargingStation;
     DateTime? bookingTime;
     dynamic customBookTime;
-    dynamic time;
+    String time;
     double? price;
 
     Datum({
@@ -46,7 +45,7 @@ class Datum {
         this.chargingStation,
         this.bookingTime,
         this.customBookTime,
-        this.time,
+        required this.time,
         this.price,
     });
 

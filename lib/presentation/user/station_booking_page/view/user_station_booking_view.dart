@@ -2,7 +2,6 @@ import 'package:ev_project/presentation/user/BottomNavigation/view/bottomnav.dar
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-
 import '../controller/user_station_booking_controller.dart';
 
 class BookingPage extends StatefulWidget {
@@ -46,7 +45,6 @@ class _BookingPageState extends State<BookingPage> {
     );
     if (pickedTime != null) {
       setState(() {
-        // Format the picked time as hour:minute
         customtimeController.text =
             "${pickedTime.hour.toString().padLeft(2, '0')}:${pickedTime.minute.toString().padLeft(2, '0')}";
       });
